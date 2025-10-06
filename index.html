@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle de Contas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>💰 Controle de Contas</h1>
+      <div class="month-nav">
+        <button id="prevMonth">◀</button>
+        <span id="currentMonth"></span>
+        <button id="nextMonth">▶</button>
+      </div>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Salário</h3>
+        <p id="salario" class="value">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>Total Fixas</h3>
+        <p id="totalFixas" class="value">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>Total Variáveis</h3>
+        <p id="totalVariaveis" class="value">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>Saldo Restante</h3>
+        <p id="saldoRestante" class="value">R$ 0,00</p>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <div class="tabs">
+          <button class="tab active" id="tabFixas">Fixas</button>
+          <button class="tab" id="tabVariaveis">Variáveis</button>
+        </div>
+        <div id="listaContas"></div>
+      </section>
+
+      <aside class="panel">
+        <h3>Gráfico</h3>
+        <canvas id="grafico" width="280" height="220"></canvas>
+        <div class="buttons">
+          <button class="btn" id="addFixa">Adicionar conta fixa</button>
+          <button class="btn" id="addVariavel">Adicionar conta variável</button>
+          <button class="btn ghost" id="exportar">Exportar relatório</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
