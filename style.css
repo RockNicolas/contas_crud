@@ -1,0 +1,183 @@
+:root {
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --muted: #64748b;
+  --radius: 12px;
+}
+
+body {
+  font-family: "Inter", system-ui, Arial;
+  background: var(--bg);
+  margin: 0;
+  padding: 24px;
+  color: #0f172a;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+header h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.month-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.month-nav button {
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.cards {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--card);
+  padding: 14px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(12, 16, 22, 0.06);
+  flex: 1;
+  min-width: 200px;
+}
+
+.card h3 {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.card .value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(12, 16, 22, 0.04);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: none;
+}
+
+.tab.active {
+  background: var(--primary);
+  color: white;
+}
+
+.bill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #eef2ff;
+}
+
+.bill .meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.bill .meta small {
+  color: var(--muted);
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+canvas {
+  display: block;
+  margin: 10px auto;
+}
+
+.progress {
+  height: 4px;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 6px;
+  background: #e2e8f0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.progress.azul::after {
+  background: #2563eb; /* Azul */
+}
+
+.progress.verde::after {
+  background: #16a34a; /* Verde */
+}
+
+.progress.vermelho::after {
+  background: #dc2626; /* Vermelho */
+}
