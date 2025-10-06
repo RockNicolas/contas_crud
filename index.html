@@ -21,12 +21,12 @@
       <div class="card">
         <h3>Salário</h3>
         <p id="salario" class="value">R$ 0,00</p>
-        <div class="progress azul"></div>
+        
       </div>
       <div class="card">
         <h3>Total Fixas</h3>
         <p id="totalFixas" class="value">R$ 0,00</p>
-          <div class="progress verde"></div>
+          <div class="progress azul"></div>
       </div>
       <div class="card">
         <h3>Total Variáveis</h3>
@@ -52,6 +52,20 @@
 
       <aside class="panel">
         <h3>Gráfico</h3>
+        <div class="grafico-legenda">
+          <div class="legenda-item">
+            <span class="cor cor-fixa"></span>
+            <span>azul</span>
+          </div>
+          <div class="legenda-item">
+            <span class="cor cor-variavel"></span>
+            <span>vermelho</span>
+          </div>
+          <div class="legenda-item">
+            <span class="cor cor-saldo"></span>
+            <span>verde</span>
+          </div>
+        </div>
         <canvas id="grafico" width="280" height="220"></canvas>
         <div class="buttons">
           <button class="btn" id="addFixa">Adicionar conta fixa</button>
