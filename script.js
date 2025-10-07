@@ -91,10 +91,6 @@ currentMonth.textContent = hoje.toLocaleDateString("pt-BR", {
 });
 
 botaoEditar.addEventListener("click", () => {
-  // Remove "R$" e pontos antes de editar
-  let valorAtual = salario.toString().replace(".", ",");
-  elSalario.value = valorAtual;
-
   elSalario.removeAttribute("readonly");
   elSalario.classList.add("editando");
   elSalario.focus();
@@ -110,17 +106,16 @@ elSalario.addEventListener("keydown", (e) => {
 });
 
 function salvarSalario() {
-  let valorDigitado = elSalario.value
-    .replace(/[^\d,.-]/g, "")
-    .replace(",", ".");
+  let valorDigitado = elSalario.value.replace(/[^\d,.-]/g, "").replace(",", ".");
   const novoSalario = parseFloat(valorDigitado);
 
-  if (!isNaN(novoSalario) && novoSalario > 0) {
+  if (!isNaN(novoSalario)) {
     salario = novoSalario;
+    elSalario.value = formatar(salario);
+    atualizarResumo();
+  } else {
+    elSalario.value = formatar(salario);
   }
-
-  elSalario.value = formatar(salario);
-  atualizarResumo();
 
   elSalario.setAttribute("readonly", true);
   elSalario.classList.remove("editando");

@@ -33,8 +33,10 @@ header {
 }
 
 header h1 {
-  font-size: 22px;
+  font-size: 30px;
   margin: 0;
+  text-align: center;
+  width: 100%;
 }
 
 .month-nav {
