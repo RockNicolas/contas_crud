@@ -222,7 +222,6 @@ canvas {
   background-color: var(--success);
 }
 
-/* ===== Salário ===== */
 .salario-card .card-header {
   display: flex;
   justify-content: space-between;
@@ -239,14 +238,18 @@ canvas {
   padding: 4px 0;
 }
 
-/* remove o quadrado preto */
+.salario-input::selection {
+  background: #e2e8f0;
+  color: var(--text);
+}
+
+
 .salario-input:focus {
   outline: none;
   border: none;
   box-shadow: none;
 }
 
-/* botão editar */
 .edit-btn {
   background: none;
   border: none;
