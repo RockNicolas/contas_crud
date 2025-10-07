@@ -221,3 +221,40 @@ canvas {
 .cor-saldo {
   background-color: var(--success);
 }
+
+/* ===== Salário ===== */
+.salario-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.salario-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 4px 0;
+}
+
+/* remove o quadrado preto */
+.salario-input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* botão editar */
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.edit-btn:hover {
+  transform: scale(1.2);
+}

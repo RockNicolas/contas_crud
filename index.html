@@ -18,26 +18,30 @@
     </header>
 
     <section class="cards">
-      <div class="card">
-        <h3>Salário</h3>
-        <p id="salario" class="value">R$ 0,00</p>
-        
+      <div class="card salario-card">
+        <div class="card-header">
+          <h3>Salário</h3>
+          <button id="editarSalario" class="edit-btn" title="Editar salário">✏️</button>
+        </div>
+        <input id="salario" class="value salario-input" type="text" value="R$ 0,00" readonly />
       </div>
+
       <div class="card">
         <h3>Total Fixas</h3>
         <p id="totalFixas" class="value">R$ 0,00</p>
-          <div class="progress azul"></div>
+        <div class="progress azul"></div>
       </div>
+
       <div class="card">
         <h3>Total Variáveis</h3>
         <p id="totalVariaveis" class="value">R$ 0,00</p>
         <div class="progress vermelho"></div>
       </div>
+
       <div class="card">
         <h3>Saldo Restante</h3>
         <p id="saldoRestante" class="value">R$ 0,00</p>
         <div class="progress verde"></div>
-
       </div>
     </section>
 
@@ -53,18 +57,9 @@
       <aside class="panel">
         <h3>Gráfico</h3>
         <div class="grafico-legenda">
-          <div class="legenda-item">
-            <span class="cor cor-fixa"></span>
-            <span>azul</span>
-          </div>
-          <div class="legenda-item">
-            <span class="cor cor-variavel"></span>
-            <span>vermelho</span>
-          </div>
-          <div class="legenda-item">
-            <span class="cor cor-saldo"></span>
-            <span>verde</span>
-          </div>
+          <div class="legenda-item"><span class="cor cor-fixa"></span><span>azul</span></div>
+          <div class="legenda-item"><span class="cor cor-variavel"></span><span>vermelho</span></div>
+          <div class="legenda-item"><span class="cor cor-saldo"></span><span>verde</span></div>
         </div>
         <canvas id="grafico" width="280" height="220"></canvas>
         <div class="buttons">

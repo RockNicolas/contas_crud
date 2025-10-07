@@ -1,4 +1,4 @@
-const salario = 4000;
+let salario = 4000;
 const contasFixas = [
   { nome: "Casa", vencimento: "15 de Outubro", valor: 1200 },
   { nome: "Carro", vencimento: "30 de Outubro", valor: 300 },
@@ -16,6 +16,7 @@ const elSaldo = document.getElementById("saldoRestante");
 const listaContas = document.getElementById("listaContas");
 const tabFixas = document.getElementById("tabFixas");
 const tabVariaveis = document.getElementById("tabVariaveis");
+const botaoEditar = document.getElementById("editarSalario");
 
 function formatar(v) {
   return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -26,7 +27,7 @@ function atualizarResumo() {
   const totalVariaveis = contasVariaveis.reduce((acc, c) => acc + c.valor, 0);
   const saldo = salario - (totalFixas + totalVariaveis);
 
-  elSalario.textContent = formatar(salario);
+  elSalario.value = formatar(salario);
   elFixas.textContent = formatar(totalFixas);
   elVariaveis.textContent = formatar(totalVariaveis);
   elSaldo.textContent = formatar(saldo);
@@ -52,9 +53,12 @@ function exibirContas(tipo) {
   });
 }
 
+let chartInstance = null;
 function desenharGrafico(fixas, variaveis, saldo) {
   const ctx = document.getElementById("grafico");
-  new Chart(ctx, {
+  if (chartInstance) chartInstance.destroy();
+
+  chartInstance = new Chart(ctx, {
     type: "doughnut",
     data: {
       labels: ["Fixas", "Variáveis", "Saldo"],
@@ -67,7 +71,6 @@ function desenharGrafico(fixas, variaveis, saldo) {
   });
 }
 
-// Alternância entre abas
 tabFixas.onclick = () => {
   tabFixas.classList.add("active");
   tabVariaveis.classList.remove("active");
@@ -80,13 +83,43 @@ tabVariaveis.onclick = () => {
   exibirContas("variaveis");
 };
 
-// Atualiza mês no topo
 const currentMonth = document.getElementById("currentMonth");
 const hoje = new Date();
 currentMonth.textContent = hoje.toLocaleDateString("pt-BR", {
   month: "long",
   year: "numeric",
 });
+
+botaoEditar.addEventListener("click", () => {
+  elSalario.removeAttribute("readonly");
+  elSalario.classList.add("editando");
+  elSalario.focus();
+  elSalario.select();
+});
+
+elSalario.addEventListener("blur", salvarSalario);
+elSalario.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    elSalario.blur();
+  }
+});
+
+function salvarSalario() {
+  let valorDigitado = elSalario.value.replace(/[^\d,.-]/g, "").replace(",", ".");
+  const novoSalario = parseFloat(valorDigitado);
+
+  if (!isNaN(novoSalario)) {
+    salario = novoSalario;
+    elSalario.value = formatar(salario);
+    atualizarResumo();
+  } else {
+    elSalario.value = formatar(salario);
+  }
+
+  elSalario.setAttribute("readonly", true);
+  elSalario.classList.remove("editando");
+}
 
 // Inicializa
 atualizarResumo();
